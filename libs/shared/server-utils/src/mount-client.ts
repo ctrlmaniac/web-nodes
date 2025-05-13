@@ -6,7 +6,6 @@ import {
 } from 'express';
 import { resolve } from 'node:path';
 import { createRequestHandler } from '@react-router/express';
-
 import type { ClientOptions } from './types.js';
 import { pathToFileURL } from 'node:url';
 

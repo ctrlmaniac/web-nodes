@@ -4,7 +4,64 @@
   "private": true,
   "type": "module",
   "nx": {
+    "projectType": "application",
     "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          {
+            "target": "generate",
+            "projects": [
+              "@larapida/prisma-tools"
+            ],
+            "params": "forward"
+          },
+          "^build"
+        ],
+        "options": {
+          "platform": "node",
+          "outputPath": "dist/apps/api-service",
+          "format": [
+            "esm"
+          ],
+          "bundle": true,
+          "thirdParty": true,
+          "main": "apps/api-service/src/main.ts",
+          "tsConfig": "apps/api-service/tsconfig.app.json",
+          "assets": [
+            {
+              "input": "apps/api-service/src/prisma/client",
+              "glob": "*.node",
+              "output": "."
+            }
+          ],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".mjs"
+            }
+          }
+        },
+        "configurations": {
+          "development": {
+            "esbuildOptions": {
+              "splitting": true
+            }
+          },
+          "production": {
+            "esbuildOptions": {
+              "sourcemap": false,
+              "outExtension": {
+                ".js": ".js"
+              }
+            }
+          }
+        }
+      },
       "serve": {
         "continuous": true,
         "executor": "@nx/js:node",
