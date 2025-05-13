@@ -1,0 +1,30 @@
+{
+  "name": "@larapida/api-service",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "nx": {
+    "targets": {
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@larapida/api-service:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@larapida/api-service:build:development"
+          },
+          "production": {
+            "buildTarget": "@larapida/api-service:build:production"
+          }
+        }
+      }
+    }
+  }
+}

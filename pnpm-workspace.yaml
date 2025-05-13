@@ -1,5 +1,9 @@
 packages:
-  - packages/*
+  - 'packages/*'
+  - 'apps/*'
+  - 'libs/shared/*'
 onlyBuiltDependencies:
+  - '@parcel/watcher'
   - '@swc/core'
-  - nx
+  - 'core-js-pure'
+  - 'nx'
