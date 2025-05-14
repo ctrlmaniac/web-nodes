@@ -15,9 +15,16 @@ export async function createApp(
   }
   app.set('ENVIRONMENT', options.environment ?? 'development');
   app.set('NAME', options.name);
-  app.set('HOSTNAME', options.hostname ?? 'localhost');
-  app.set('SECURE', options.secure ?? false);
+  app.set('BASE_DOMAIN', options.baseDomain ?? 'localhost');
   app.set('PORT', options.port ?? 3000);
+  app.set('SECURE', options.secure ?? false);
+
+  const HTTPS = app.get('SECURE') === true ? 'https' : 'http';
+  const HOSTNAME =
+    app.get('BASE_DOMAIN') === 'localhost'
+      ? `${HTTPS}://${app.get('BASE_DOMAIN')}:${app.get('PORT')}`
+      : `${HTTPS}://${app.get('NAME')}.${app.get('BASE_DOMAIN')}:`;
+  app.set('HOSTNAME', HOSTNAME);
 
   // Init logger based on ENV
   const logger = createLogger(app);

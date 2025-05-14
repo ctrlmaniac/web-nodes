@@ -53,10 +53,10 @@ export interface NodeInfo {
   name: string;
 
   /**
-   * The public URL or hostname of the node.
+   * The public URL or hostname of the base domain.
    * @default "localhost"
    */
-  hostname?: string;
+  baseDomain?: string;
 
   /**
    * Indicates whether the node should be served over HTTPS.

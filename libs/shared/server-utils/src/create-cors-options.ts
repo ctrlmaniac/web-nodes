@@ -2,13 +2,13 @@ import type { CorsOptions } from 'cors';
 import type { Application } from 'express';
 
 /**
- * Creates CORS configuration based on the app's hostname.
+ * Creates CORS configuration based on the app's HOSTNAME and BASE_DOMAIN.
  */
 export function createCorsOptions(app: Application): CorsOptions {
-  const hostname: string = app.get('HOSTNAME');
+  const baseDomain: string = app.get('BASE_DOMAIN');
 
-  // Caso locale: permetti tutto
-  if (hostname === 'localhost') {
+  // Caso localhost: permette tutto
+  if (baseDomain === 'localhost') {
     return {
       origin: '*',
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -17,15 +17,13 @@ export function createCorsOptions(app: Application): CorsOptions {
     };
   }
 
-  // Rimuove il sottodominio (es: api.example.com → example.com)
-  const domainParts = hostname.split('.');
-  const baseDomain = domainParts.slice(-2).join('.');
-  const baseDomainPattern = new RegExp(`\\.${baseDomain.replace('.', '\\.')}$`);
+  // Crea pattern per includere dominio base e tutti i sottodomini
+  const baseDomainPattern = new RegExp(`\\.${baseDomain}$`);
 
   const allowedOrigins: (string | RegExp)[] = [
     `http://${baseDomain}`,
     `https://${baseDomain}`,
-    baseDomainPattern, // tutti i sottodomini
+    baseDomainPattern,
   ];
 
   return {
@@ -39,7 +37,7 @@ export function createCorsOptions(app: Application): CorsOptions {
       ) {
         callback(null, true);
       } else {
-        callback(new Error('Non permesso dalle regole CORS'));
+        callback(new Error('CORS origin not allowed'));
       }
     },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
