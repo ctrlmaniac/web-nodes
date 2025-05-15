@@ -1,5 +1,6 @@
 import '@dotenvx/dotenvx/config';
 import { createApp, startApp } from '@larapida/shared-server-utils';
+import { prisma } from './prisma';
 
 async function main() {
   const app = await createApp({
@@ -13,6 +14,9 @@ async function main() {
         ? process.env.SECURE === 'true'
         : process.env.NODE_ENV === 'production',
     port: Number(process.env.PORT) || 3100,
+    customMiddlewares(app) {
+      app.use(prisma);
+    },
   });
 
   await startApp(app);

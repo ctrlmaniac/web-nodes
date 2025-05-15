@@ -8,7 +8,11 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false
   },
-  "include": ["src/**/*.ts", "../../libs/shared/server-types/src/**/*.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "../../libs/shared/server-types/src/**/*.d.ts",
+    "../../libs/api-service/types/src/**/*.d.ts"
+  ],
   "exclude": ["eslint.config.js", "eslint.config.cjs", "eslint.config.mjs"],
   "references": [
     {

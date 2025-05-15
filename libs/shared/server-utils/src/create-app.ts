@@ -38,6 +38,11 @@ export async function createApp(
     app.use(middleware);
   }
 
+  // 🔧 Allow user to inject custom middleware/setup logic
+  if (typeof options.customMiddlewares === 'function') {
+    await options.customMiddlewares(app);
+  }
+
   // Client mount
   if (options.client) {
     await mountClient(app, options.client);

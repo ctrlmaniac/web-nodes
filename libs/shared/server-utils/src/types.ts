@@ -1,4 +1,4 @@
-import type { RequestHandler } from 'express';
+import type { Application, RequestHandler } from 'express';
 
 /**
  * Options for configuring the client-side application.
@@ -76,6 +76,7 @@ export interface NodeInfo {
  * Options for creating the application, including both client and node-specific configurations.
  */
 export interface CreateAppOptions extends NodeInfo {
+  customMiddlewares?: (app: Application) => void | Promise<void>;
   /**
    * Optional configuration for the client-side application.
    */

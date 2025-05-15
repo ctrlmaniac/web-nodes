@@ -23,7 +23,8 @@
           "watchDepsName": "watch-deps"
         }
       },
-      "include": ["libs/shared/server-types/*"]
+      "include": ["libs/shared/server-types/*", "libs/api-service/types/*"],
+      "exclude": ["libs/api-service/types/*"]
     },
     {
       "plugin": "@nx/webpack/plugin",
@@ -43,7 +44,7 @@
     },
     {
       "plugin": "@nx/js/typescript",
-      "include": ["tools/prisma/*"],
+      "include": ["tools/prisma/*", "libs/api-service/types/*"],
       "options": {
         "typecheck": {
           "targetName": "typecheck"
@@ -53,6 +54,11 @@
   ],
   "targetDefaults": {
     "@nx/esbuild:esbuild": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "@nx/js:tsc": {
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]

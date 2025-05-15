@@ -5,9 +5,9 @@
   "private": true,
   "engines": {
     "node": "^22.14.0",
-    "pnpm": "^10.10.0"
+    "pnpm": "^10.11.0"
   },
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@10.11.0",
   "scripts": {
     "prepare": "husky",
     "commit": "cz",
@@ -54,6 +54,7 @@
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
     "husky": "^9.1.7",
+    "jsonc-eslint-parser": "^2.1.0",
     "nx": "21.0.3",
     "prettier": "^2.6.2",
     "prisma": "^6.7.0",

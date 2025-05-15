@@ -14,6 +14,12 @@
     },
     {
       "path": "./tools/prisma"
+    },
+    {
+      "path": "./libs/api-service/types"
+    },
+    {
+      "path": "./libs/api-service/types"
     }
   ]
 }

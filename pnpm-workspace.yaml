@@ -1,13 +1,14 @@
 packages:
-  - packages/*
-  - apps/*
-  - libs/shared/*
-  - tools/*
+  - 'packages/*'
+  - 'apps/*'
+  - 'libs/shared/*'
+  - 'tools/*'
+  - 'libs/api-service/types'
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@prisma/engines'
   - '@swc/core'
-  - core-js-pure
-  - esbuild
-  - nx
-  - prisma
+  - 'core-js-pure'
+  - 'esbuild'
+  - 'nx'
+  - 'prisma'
