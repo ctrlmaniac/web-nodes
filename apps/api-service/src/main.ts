@@ -7,11 +7,12 @@ async function main() {
     environment:
       (process.env.NODE_ENV as 'development' | 'production' | undefined) ||
       'development',
-    hostname: process.env.HOSTNAME,
+    baseDomain: process.env.BASE_DOMAIN,
     secure:
       process.env.SECURE !== undefined
         ? process.env.SECURE === 'true'
         : process.env.NODE_ENV === 'production',
+    port: Number(process.env.PORT) || 3100,
   });
 
   await startApp(app);

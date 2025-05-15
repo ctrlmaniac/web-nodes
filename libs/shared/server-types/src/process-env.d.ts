@@ -3,7 +3,7 @@ declare global {
     interface ProcessEnv {
       NODE_ENV?: 'development' | 'production';
       NODE_NAME: string;
-      HOSTNAME?: string;
+      BASE_DOMAIN?: string;
       SECURE?: 'true' | 'false';
       PORT?: string;
     }
