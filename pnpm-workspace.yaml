@@ -3,7 +3,7 @@ packages:
   - 'apps/*'
   - 'libs/shared/*'
   - 'tools/*'
-  - 'libs/api-service/types'
+  - 'libs/api-service/*'
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@prisma/engines'

@@ -20,6 +20,12 @@
     },
     {
       "path": "./libs/api-service/types"
+    },
+    {
+      "path": "./libs/api-service/endpoints"
+    },
+    {
+      "path": "./libs/api-service/utils"
     }
   ]
 }

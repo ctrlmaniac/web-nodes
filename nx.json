@@ -44,7 +44,12 @@
     },
     {
       "plugin": "@nx/js/typescript",
-      "include": ["tools/prisma/*", "libs/api-service/types/*"],
+      "include": [
+        "tools/prisma/*",
+        "libs/api-service/types/*",
+        "libs/api-service/endpoints/*",
+        "libs/api-service/utils/*"
+      ],
       "options": {
         "typecheck": {
           "targetName": "typecheck"

@@ -4,6 +4,12 @@
   "include": [],
   "references": [
     {
+      "path": "../../libs/api-service/endpoints"
+    },
+    {
+      "path": "../../libs/api-service/utils"
+    },
+    {
       "path": "../../libs/shared/server-utils"
     },
     {
